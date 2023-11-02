@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        tier: frontend
+        tier: frontend  # Define labels under metadata.labels
     spec:
       containers:
       - name: nginx
