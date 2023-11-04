@@ -3,15 +3,15 @@ kind: Pod
 metadata: 
   name: init-container-demo
 spec:
-  containers:
+  containers: #this container is where the application is going to be hosted
   - name: nginx-as-primary
     image: nginx
     ports:
     - containerPort: 80
     volumeMounts:
-    - name: myvol
+    - name: myvol # the volume named myvol is going to be mounted to the below path
       mountPath: /usr/share/nginx/html
-  initContainers:
+  initContainers: # this inital conatiner will run the below commands and once it's done it will die, then the Pod will start running
   - name: alpine-as-secondary
     image: alpine
     command:
@@ -21,10 +21,10 @@ spec:
       mkdir -p init-cont && touch /init-cont/index.html && echo "Hello.. this trasfered from init-cont" > /init-cont/index.html
       sleep 30
     volumeMounts:
-    - name: myvol
+    - name: myvol # the volume named myvol is mounted in the below path
       mountPath: /init-cont
-  volumes:
+  volumes: # a storage myvol is created 
   - name: myvol
-    emptyDir: {}
+    emptyDir: {} # the volume is shared within the Pod
     
     
