@@ -9,7 +9,7 @@ spec:
     ports:
     - containerPort: 80
     volumeMounts:
-    - name: myVol
+    - name: myvol
       mountPath: /usr/share/nginx/html
   initContainers:
   - name: alpine-as-secondary
@@ -21,10 +21,10 @@ spec:
       mkdir -p init-cont && touch /init-cont/index.html && echo "Hello.. this trasfered from init-cont" > /init-cont/index.html
       sleep 30
     volumeMounts:
-    - name: myVol
+    - name: myvol
       mountPath: /init-cont
   volumes:
-  - name: myVol
+  - name: myvol
     emptyDir: {}
     
     
