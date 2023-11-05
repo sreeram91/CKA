@@ -6,7 +6,7 @@ metadata:
     app: node-app
 spec:
   replicas: 5
-  selectors:
+  selector:
     matchLabels:
       app: node-app
   template:
@@ -18,4 +18,4 @@ spec:
       - name: node-app
         image: sreeram91/versionapp:v1
         ports:
-        - containerPort: 3004 
+        - containerPort: 3004
