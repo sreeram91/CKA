@@ -6,12 +6,12 @@ metadata:
     app: simple-node-app
 spec:
   replicas: 5
-  minReadySeconds: 45
+  minReadySeconds: 45 # wait for 45 seconds before the old version is terminated (keeps the pd ready for 45 seconds before termination)
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 2
+      maxUnavailable: 1 # 1 pod can be made unavailable while updating to achieve zero downtime
+      maxSurge: 2 # 2 extra pods can be made available while updating to achieve zero downtime
   selector:
     matchLabels:
       app: simple-node-app
