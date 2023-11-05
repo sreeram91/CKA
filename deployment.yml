@@ -16,6 +16,6 @@ spec:
     spec: 
       containers:
       - name: node-app
-        image: sreeram91/rollingupdatesx86:v1
+        image: sreeram91/nodeappx86
         ports:
-        - containerPort: 3004
+        - containerPort: 3003
