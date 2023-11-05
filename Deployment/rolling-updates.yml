@@ -19,8 +19,9 @@ spec:
     metadata:
       labels:
         app: simple-node-app
-    containers:
-    - name: rollingupdatesx86-nodeapp
-      image: rollingupdatesx86:v1
-      ports:
-      - containerPort: 3004
+    spec:
+      containers:
+      - name: rollingupdatesx86-nodeapp
+        image: rollingupdatesx86:v1
+        ports:
+        - containerPort: 3004
