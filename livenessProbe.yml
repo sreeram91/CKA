@@ -1,0 +1,18 @@
+apiVersion: V1
+kind: Pod
+metadata: 
+  name: lp-demo
+  labels: # labels for the pod
+    app: lc-nginx-app
+spec:
+  terminationGracePeriod: 0 # this means, when the probe fails, container shutdowns immediatly without any delay 
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+    livenessProbe: # probe to check if the application is alive
+      tcpSocket: # a check which is performed on by opening a tcp connection on the container's specified port
+        port: 90 # if the port matches the container port, checks passes else fails
+      initialDelaySeconds: 5 # wait for 5 seconds to start the check
+      periodSeconds: 5 # the check will continue to perform every 5 seconds after the first check
