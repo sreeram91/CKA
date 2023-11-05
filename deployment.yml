@@ -5,7 +5,7 @@ metadata:
   labels:
     app: node-app
 spec:
-  replicas: 8
+  replicas: 5
   selectors:
     matchLabels:
       app: node-app
@@ -13,8 +13,9 @@ spec:
     metadata:
       labels:
         app: node-app
-  containers:
-  - name: node-app
-    image: sreeram91/versionapp:v1
-    ports:
-    - containerPort: 3004
+    spec: 
+      containers:
+      - name: node-app
+        image: sreeram91/versionapp:v1
+        ports:
+        - containerPort: 3004 
