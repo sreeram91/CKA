@@ -5,7 +5,7 @@ metadata:
   labels: # labels for the pod
     app: lc-nginx-app
 spec:
-  terminationGracePeriodSeconds: 0 # this means, when the probe fails, container shutdowns immediatly without any delay 
+  terminationGracePeriodSeconds: 0 # this means, when the probe fails, container shutdowns immediately without any delay 
   containers:
   - name: nginx
     image: nginx
