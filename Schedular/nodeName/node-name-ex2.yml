@@ -18,7 +18,7 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
-        volumeMount:
+        volumeMounts:
         - name: nginx-volume
           mountPath: /usr/share/nginx/html
       initContainers:
@@ -28,7 +28,7 @@ spec:
         - sh
         - "-c"
         - "mkdir -p /nginx-files && echo 'Hello from NGINX!' > /nginx-files/sample.html"
-        volumeMount:
+        volumeMounts:
         - name: nginx-volume
           mountPath: /nginx-file/sample.html
       volumes:
