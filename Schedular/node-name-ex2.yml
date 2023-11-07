@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-name
+spec:
+  selector:
+    matchLabels:
+      app: custom-nginx
+  template:
+    metadata:
+      labels:
+        app: custom-nginx
+    spec:
+      nodeName: node-2
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          limits:
+            memory: "250Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-vol
+          mountPath: /usr/share/nginx/html
+      initContainers:
+      - name: alpine 
+        image: alpine
+        resources:
+          limits:
+            memory: "250Mi"
+            cpu: "500m"
+        command:
+        - "bin/sh"
+        - "-c"
+        - "mkdir -p nginx-files && echo Hello there!!' > /nginx-files/sample.html"
+        volumeMounts:
+        - name: nginx-vol
+          mountPath: /nginx-files
+      volumes:
+      - name: nginx-vol
+        emptyDir: {}
