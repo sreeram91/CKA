@@ -15,10 +15,6 @@ spec:
       containers:
       - name: nginx
         image: nginx
-        resources:
-          limits:
-            memory: "250Mi"
-            cpu: "500m"
         ports:
         - containerPort: 80
         volumeMounts:
@@ -27,10 +23,6 @@ spec:
       initContainers:
       - name: alpine 
         image: alpine
-        resources:
-          limits:
-            memory: "250Mi"
-            cpu: "500m"
         command:
         - "bin/sh"
         - "-c"
