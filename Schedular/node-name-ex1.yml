@@ -1,18 +1,21 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: node-selector-pod
-  labels:
-    name: node-selector-pod
+  name: node-name-selector
 spec:
-  containers:
-  - name: busybox
-    image: busybox
-    args:
-    - /bin/sh
-    - -c
-    - sleep 3600
-    resources:
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
+  selector:
+    matchLabels:
+      app: node-name-selector
+  template:
+    metadata:
+      labels:
+        app: node-name-selector
+    spec:
+      nodeName: node-1
+      containers:
+      - name: busybox
+        image: busybox
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
