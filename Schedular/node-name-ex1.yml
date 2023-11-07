@@ -13,13 +13,28 @@ spec:
     spec:
       nodeName: node-1
       containers:
-      - name: busybox
-        image: busybox
-        args:
-        - /bin/bash
-        - -c
-        - date; sleep 3600
+      - name: nginx
+        image: nginx
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
+        volumeMounts:
+        - name: nginx-volume
+          mountPath: /usr/share/nginx/html
+      - name: alpine
+        image: alpine
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        command:
+        - "/bin/sh"
+        - "-c"
+        - "mkdir -p /nginx-files && echo 'hello from nginx app' > /nginx-files/sample.html"
+        volumeMounts:
+        - name: nginx-volume
+          mountPath: /nginx-files
+      volumes:
+      - name: nginx-volume
+        emptyDir: {}
