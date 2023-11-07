@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: printing-hello
+spec:
+  schedule: '*/1 * * * *' # runs this job on every minute, every hour, every day, every month, every day of the week
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: hello
+          labels:
+            app: my-hello-app
+        spec:
+          containers:
+          - name: hello-app
+            image: busybox
+            command:
+            - "/bin/sh"
+            - "-c"
+            - "date; echo hello all.."
