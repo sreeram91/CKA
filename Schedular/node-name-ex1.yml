@@ -15,6 +15,10 @@ spec:
       containers:
       - name: busybox
         image: busybox
+        args:
+        - /bin/bash
+        - -c
+        - date; sleep 3600
         resources:
           limits:
             memory: "128Mi"
