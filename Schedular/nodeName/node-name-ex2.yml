@@ -27,7 +27,7 @@ spec:
         command:
         - sh
         - "-c"
-        - "mkdir -p /nginx-files && touch /nginx-file/sample.html && echo 'Hello from NGINX!' > /nginx-file/sample.html"
+        - "mkdir -p /nginx-file && touch /nginx-file/sample.html && echo 'Hello from NGINX!' > /nginx-file/sample.html"
         volumeMounts:
         - name: nginx-volume
           mountPath: /nginx-file
