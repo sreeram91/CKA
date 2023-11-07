@@ -15,19 +15,11 @@ spec:
       containers:
       - name: nginx
         image: nginx
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         volumeMounts:
         - name: nginx-volume
           mountPath: /usr/share/nginx/html
       - name: alpine
         image: alpine
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         command:
         - "/bin/sh"
         - "-c"
