@@ -1,34 +1,36 @@
-apiVersion: apps/v1
+apiVersion: v1
 kind: Deployment
 metadata:
-  name: node-name-ex2
+  - name: node-name-ex2
 spec:
   selector:
     matchLabels:
-      app: custom-nginx
+      tier: custom-nginx
   template:
     metadata:
+      name: custom-nginx
       labels:
-        app: custom-nginx
+        tier: custom-nginx
     spec:
+      nodeName: node-2
       containers:
       - name: nginx
         image: nginx
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: nginx-vol
+        volumeMount:
+        - name: nginx-volume
           mountPath: /usr/share/nginx/html
       initContainers:
-      - name: alpine 
+      - name: alpine
         image: alpine
         command:
-        - "bin/sh"
+        - sh
         - "-c"
-        - "mkdir -p /nginx-files && echo Hello there!!' > /nginx-files/sample.html"
-        volumeMounts:
-        - name: nginx-vol
-          mountPath: /nginx-files
+        - "mkdir -p /nginx-files && echo 'Hello from NGINX!' > /nginx-files/sample.html"
+        volumeMount:
+        - name: nginx-volume
+          mountPath: /nginx-file/sample.html
       volumes:
-      - name: nginx-vol
+      - name: nginx-volume
         emptyDir: {}
