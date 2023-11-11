@@ -15,13 +15,13 @@ spec:
         app: daemonsets-example-app
     spec:
       containers:
-        name: daemonsets-example-container
-        image: lerndevops/tomcat:8.5.47
-        ports:
-        - containerPort: 8080
-        resources:
-          limits:
-            memory: 200Mi
-          requests:
-            cpu: 100m
-            memory: 200Mi
+        - name: daemonsets-example-container
+          image: lerndevops/tomcat:8.5.47
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi
