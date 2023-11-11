@@ -1,0 +1,27 @@
+aviVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonsets-example
+  labels:
+    app: daemonsets-example-app
+spec:
+  selector:
+    matchLabels:
+      app: daemonsets-example-app
+  template:
+    metadata:
+      name: daemonsets-example-pod
+      labels:
+        app: daemonsets-example-app
+    spec:
+      containers:
+        name: daemonsets-example-container
+        image: lerndevops/tomcat:8.5.47
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            memory: 200mi
+          requests:
+            cpu: 100m
+            memory: 200mi
