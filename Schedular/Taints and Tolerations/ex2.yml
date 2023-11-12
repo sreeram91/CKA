@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toleration-example2
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: toleration-example2
+  template:
+    metadata:
+      name: toleration-example2-pod
+      labels:
+        app: toleration-example2
+    spec:
+      tolerations: # this pod has tolerations so that it can be scheduled in the nodes that is Tainted and Untainted both
+        - key: zone
+          operator: "Exists" # means => key with a value "Exists" the value mentioned here and the effect will be "NoExecute" (No new pods can be scheduled, pods running the tainted node with NoExecute will also be terminated)
+          value: east
+          effect: NoExecute # the node is tainted with NoExecute effect, so you require a toleration to get the pod scheduled in that node
+      containers:
+      - name: nginx-app2
+        image: nginx:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
