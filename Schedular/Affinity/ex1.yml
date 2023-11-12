@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: affinity-example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: affinity-example-app
+  template:
+    metadata:
+      name: affinity-example-pod
+      labels:
+        app: affinity-example-app
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 80
+              preference:
+                matchExpressions:
+                  - key: zone
+                    operator: IN
+                    values:
+                      - east
+            - weight: 20
+              preference:
+                matchExpressions:
+                  - key: env
+                    operator: IN
+                    values:
+                      - prod
+      containers:
+        - name: nginx-app
+          image: nginx:latest
+          resources:
+            limits:
+              memory: 128Mi
+              cpu: 100m
+          ports:
+            - containerPort: 80
