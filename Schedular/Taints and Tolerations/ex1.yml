@@ -15,7 +15,7 @@ spec:
     spec:
       tolerations: # this pod has tolerations so that it can be scheduled in the nodes that is Tainted and Untainted both
         - key: zone
-          operator: "Equal" # means => key with a value "equals" the value mentioned here and the effect will be "NoSchedule" (No new pods can be scheduled, but the pods which are already running in the node will nor be terminated, unlike NoExecution)
+          operator: "Equal" # means => key with a value "Equals" the value mentioned here and the effect will be "NoSchedule" (No new pods can be scheduled, but the pods which are already running in the node will nor be terminated, unlike NoExecution)
           value: east
           effect: NoSchedule # the node is tainted with NoSchedule effect, so you require a toleration to get the pod scheduled in that node
       containers:
