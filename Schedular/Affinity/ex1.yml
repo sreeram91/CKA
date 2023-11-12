@@ -15,16 +15,16 @@ spec:
         app: affinity-example-app
     spec:
       affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 80
+        nodeAffinity: # deciding on which node the pod has to be scheduled based on a condition given
+          preferredDuringSchedulingIgnoredDuringExecution: # this will make the pod scheduled to any node even if the condition is not met
+            - weight: 80 # 80% weightage is given to the node whose label in zone=east
               preference:
                 matchExpressions:
                   - key: zone
                     operator: In
                     values:
                       - east
-            - weight: 20
+            - weight: 20 # 20% weightage is given to the node whose label is env=prod
               preference:
                 matchExpressions:
                   - key: env
