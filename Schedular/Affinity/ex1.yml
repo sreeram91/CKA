@@ -21,7 +21,7 @@ spec:
               preference:
                 matchExpressions:
                   - key: zone
-                    operator: In
+                    operator: In # means => key with a value "in" the set of values
                     values:
                       - east
             - weight: 20 # 20% weightage is given to the node whose label is env=prod

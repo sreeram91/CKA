@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toleration-example
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: toleration-example
+  template:
+    metadata:
+      name: toleration-example-pod
+      labels:
+        app: toleration-example
+    spec:
+      tolerations: # this pod has tolerations so that it can be scheduled in the pods that meets the below criteria
+        - key: zone
+          operator: equal # means => key with a value "equals" the value mentioned here and the effect will be "NoSchedule" 
+                          #(No new pods can be scheduled, but the pods which are already running in the node will nor be terminated, unlike NoExecution)
+          value: east
+          effect: NoSchedule
+      containers:
+      - name: nginx-app
+        image: nginx:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
