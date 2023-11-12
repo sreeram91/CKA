@@ -21,14 +21,14 @@ spec:
               preference:
                 matchExpressions:
                   - key: zone
-                    operator: IN
+                    operator: In
                     values:
                       - east
             - weight: 20
               preference:
                 matchExpressions:
                   - key: env
-                    operator: IN
+                    operator: In
                     values:
                       - prod
       containers:
