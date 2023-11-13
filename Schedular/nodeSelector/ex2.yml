@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-selector-deployment2
+spec:
+  selector:
+    matchLabels:
+      app: node-selector-app2
+  template:
+    metadata:
+      name: node-selector-pod2
+      labels:
+        app: node-selector-app2
+    spec:
+      nodeSelector:
+        zone: east
+      containers:
+      - name: nginx-app-container2
+        image: nginx:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
