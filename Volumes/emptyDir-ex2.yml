@@ -35,7 +35,7 @@ spec:
             [
               "sh",
               "-c",
-              "echo 'Hello world > /usr/share/nginx/html/index.html"
+              "echo Hello world > /usr/share/nginx/html/index.html"
             ]
           volumeMounts:
             - name: mynginxvol
