@@ -11,14 +11,14 @@ spec:
     volumeMounts:
     - name: myvol # the volume named myvol is going to be mounted to the below path
       mountPath: /usr/share/nginx/html
-  initContainers: # this inital conatiner will run the below commands and once it's done it will die, then the Pod will start running
+  initContainers: # this initial container will run the below commands and once it's done it will die, then the Pod will start running
   - name: alpine-as-secondary
     image: alpine
     command:
     - sh
     - "-c"
     - |
-      mkdir -p init-cont && touch /init-cont/index.html && echo "Hello.. this trasfered from init-cont" > /init-cont/index.html
+      mkdir -p init-cont && touch /init-cont/index.html && echo "Hello.. this transferred from init-cont" > /init-cont/index.html
       sleep 30
     volumeMounts:
     - name: myvol # the volume named myvol is mounted in the below path
