@@ -37,11 +37,11 @@ spec:
             [
               "sh",
               "-c",
-              "mkdir -p /html-serve; sleep 3600"
+              "sleep 3600"
             ]
           volumeMounts:
             - name: mynginxvol
-              mountPath: /html-serve
+              mountPath: /usr/share/nginx/html
           resources:
             limits:
               memory: "128Mi"
