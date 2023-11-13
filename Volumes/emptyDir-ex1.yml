@@ -31,8 +31,7 @@ spec:
             [
               "sh",
               "-c",
-              "echo 'hello world!!' > /html-serve/index.html", 
-              "sleep 3600"
+              "echo hello world!! > /html-serve/index.html; sleep 3600"
             ]
           volumeMounts:
             - name: mynginxvol
