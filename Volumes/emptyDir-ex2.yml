@@ -16,6 +16,12 @@ spec:
       containers:
         - name: helloworld-app2
           image: nginx:latest
+          command:
+            [
+              "/bin/sh",
+              "-c",
+              "echo hello world from 2 > /usr/share/nginx/html/sample.html" 
+            ]
           volumeMounts:
             - name: mynginxvol
               mountPath: /usr/share/nginx/html
