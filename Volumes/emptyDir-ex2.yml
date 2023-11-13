@@ -20,7 +20,8 @@ spec:
             [
               "sh",
               "-c",
-              "mkdir -p /html-serve; sleep 3600"
+              "mkdir -p /html-serve",
+              "echo hello > /html-serve/index.html; sleep 3600"
             ]
           volumeMounts:
             - name: mynginxvol
