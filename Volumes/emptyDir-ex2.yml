@@ -17,7 +17,7 @@ spec:
         image: alpine
         command: ["sh", "-c", "touch /test-dir/sample.txt; sleep 3600"]
         volumeMounts:
-        - name: test-vol1
+        - name: test-vol
           mountPath: /test-dir
         resources:
           limits:
@@ -26,7 +26,7 @@ spec:
       - name: alpine2
         image: alpine
         volumeMounts:
-        - name: test-vol1
+        - name: test-vol
           mountPath: /checking-dir
         resources:
           limits:
