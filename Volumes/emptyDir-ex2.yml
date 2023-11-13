@@ -31,6 +31,12 @@ spec:
               cpu: "100m"
         - name: helloworld-app2
           image: nginx:latest
+          command:
+            [
+              "sh",
+              "-c",
+              "echo 'Hello world > /usr/share/nginx/html/index.html"
+            ]
           volumeMounts:
             - name: mynginxvol
               mountPath: /usr/share/nginx/html
