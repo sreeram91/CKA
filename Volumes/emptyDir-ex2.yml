@@ -32,6 +32,6 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "100m"
-      volume:
+      volumes:
       - name: test-vol
         emptyDir: {}
