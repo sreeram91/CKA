@@ -17,7 +17,7 @@ spec:
         - name: helloworld-app
           image: nginx:latest
           volumeMounts:
-            - name: myNginxVol
+            - name: mynginxvol
               mountPath: /usr/share/nginx/html
           resources:
             limits:
@@ -31,15 +31,16 @@ spec:
             [
               "sh",
               "-c",
-              'echo "hello world!!" > /html-serve/index.html, sleep 3600',
+              "echo 'hello world!!' > /html-serve/index.html", 
+              "sleep 3600"
             ]
           volumeMounts:
-            - name: myNginxVol
+            - name: mynginxvol
               mountPath: /html-serve
           resources:
             limits:
               memory: "128Mi"
               cpu: "100m"
       volumes:
-        - name: myNginxVol
+        - name: mynginxvol
           emptyDir: {}
