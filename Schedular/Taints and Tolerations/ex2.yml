@@ -16,7 +16,7 @@ spec:
       tolerations: # this pod has tolerations so that it can be scheduled in the nodes that is Tainted and Untainted both
         - key: zone
           operator: "Exists" # means => tolerate if the taint "Exists" with the effect "NoExecute" (No new pods can be scheduled, pods running the tainted node with NoExecute will also be terminated)
-          effect: NoExecute # the node is tainted with NoExecute effect, so you require a toleration to get the pod scheduled in that node
+          effect: "NoExecute" # the node is tainted with NoExecute effect, so you require a toleration to get the pod scheduled in that node
       containers:
       - name: nginx-app2
         image: nginx:latest
