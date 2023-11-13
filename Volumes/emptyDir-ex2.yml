@@ -37,7 +37,7 @@ spec:
             [
               "sh",
               "-c",
-              "sleep 3600"
+              "cat /usr/share/nginx/html/index.html; sleep 3600"
             ]
           volumeMounts:
             - name: mynginxvol
