@@ -15,7 +15,7 @@ spec:
       containers:
       - name: alpine1
         image: alpine
-        command: ["sh", "-c", "touch /test-dir/sample.txt; sleep 3600"]
+        command: ["sh", "-c", "echo hello from alpine1 > /test-dir/sample.txt; sleep 3600"]
         volumeMounts:
         - name: test-vol
           mountPath: /test-dir
@@ -25,6 +25,7 @@ spec:
             cpu: "100m"
       - name: alpine2
         image: alpine
+        command: ["sh", "-c", "echo hello from alpine2 > /checking-dir/sample.txt; sleep 3600"]
         volumeMounts:
         - name: test-vol
           mountPath: /checking-dir
