@@ -1,0 +1,45 @@
+# use emptyDir whenever you want to share a location within the pod (multi-container pods)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emptydir-test
+spec:
+  selector:
+    matchLabels:
+      app: emptydir-test-app
+  template:
+    metadata:
+      name: emptydir-test-pods
+      labels:
+        app: emptydir-test-app
+    spec:
+      containers:
+        - name: helloworld-app
+          image: nginx:latest
+          volumeMounts:
+            - name: myNginxVol
+              mountPath: /usr/share/nginx/html
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          ports:
+            - containerPort: 80
+        - name: alpine
+          image: alpine
+          command:
+            [
+              "sh",
+              "-c",
+              'echo "hello world!!" > /html-serve/index.html, sleep 3600',
+            ]
+          volumeMounts:
+            - name: myNginxVol
+              mountPath: /html-serve
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+      volumes:
+        - name: myNginxVol
+          emptyDir: {}
