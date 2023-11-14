@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myalpine
+  labels:
+    name: myalpine-app
+spec:
+  containers:
+  - name: myalpine
+    image: alpine
+    command:
+      [
+        "sh",
+        "-c",
+        "mkdir -p /test-dir",
+        "echo Hello from Alpine > /test-dir/sample.txt; sleep 3600"
+      ]
+    volumeMounts:
+    - name: myalpine-vol
+      mountPath: /test-dir
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
+  volumes:
+  - name: myalpine-vol
+    hostpath: /tmp/from-alpine # path on the host system (node on which this pod will be scheduled)
+    type: Directory # this field is optional
