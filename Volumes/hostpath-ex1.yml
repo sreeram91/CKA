@@ -25,5 +25,5 @@ spec:
   volumes:
   - name: myalpine-vol
     hostPath: 
-      path: /from-alpine # path on the host system where you want to share the data (node on which this pod will be scheduled)
+      path: /tmp/msg # path on the host system where you want to share the data (node on which this pod will be scheduled)
       type: Directory # this field is optional
