@@ -22,7 +22,7 @@ spec:
         image: nginx:latest
         volumeMounts:
         - name: nginx-pv
-          mountPath: /var/lib/nginx
+          mountPath: /var/log/nginx
         resources:
           limits:
             memory: "128Mi"
