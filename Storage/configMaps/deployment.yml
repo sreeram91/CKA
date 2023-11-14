@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cm-deployment
+spec:
+  selector:
+    matchLabels:
+      app: cm-deployment-app
+  template:
+    metadata:
+      name: cm-deployment-pod
+      labels:
+        app: cm-deployment-app
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        volumeMounts:
+        - name: from-cm-vol
+          mountPath: /use/share/nginx/html
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: from-cm-vol
+        configMap:
+          name: dev-html
