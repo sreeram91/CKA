@@ -6,8 +6,11 @@ spec:
   capacity:
     storage: 1000Mi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteOnce # can only be read and written once. If the pod crashes and the container is scheduled to another node, the data cannot be accessed.
   hostPath:
     path: /tmp/logs
-  persistentVolumeReclaimPolicy: Recycle
+  persistentVolumeReclaimPolicy: Recycle # even if you delete the pvc, pv can be reused
   storageClassName: standard # pvs' can have class and this pv can only be bound to pvc that requesting that class
+
+# persistentVolumeReclaimPolicy: Delete => if you delete the pvc, pv will also be deleted
+# persistentVolumeReclaimPolicy: Retain => allows for manual reclamation of the resource. If the pvc is deleted, the pv will still exist and the volume is considered 'released'. But it's not yet available to for another claim because the previous claimant's data remains on the volume.
