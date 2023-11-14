@@ -25,4 +25,4 @@ spec:
   volumes:
   - name: myalpine-vol
     hostpath: /tmp/from-alpine # path on the host system (node on which this pod will be scheduled)
-    type: Directory # this field is optional
+    #type: Directory # this field is optional
