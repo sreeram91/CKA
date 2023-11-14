@@ -11,7 +11,7 @@ spec:
     metadata:
       name: my-nginx-pod
       labels:
-        app: myapp-nginx-app
+        app: my-nginx-app
     spec:
       tolerations:
       - key: env
