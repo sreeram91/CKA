@@ -1,3 +1,4 @@
+# make use of hostPath if you want to share the location from your container to the VM (node assigned). This has some restrictions too.
 apiVersion: v1
 kind: Pod
 metadata:

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx-deploy
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: my-nginx-app
+  template:
+    metadata:
+      name: my-nginx-pod
+      labels:
+        app: myapp-nginx-app
+    spec:
+      tolerations:
+      - key: env
+        operator: "Exists"
+        effect: "NoExecute"
+      containers:
+      - name: nginx
+        image: nginx:latest
+        volumeMounts:
+        - name: nginx-pv
+          mountPath: /var/lib/nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: nginx-pv
+        persistentVolumeClaim:
+          claimName: my-nginx-pvc
