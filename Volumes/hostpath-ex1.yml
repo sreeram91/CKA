@@ -1,29 +1,22 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: myalpine
+  name: mynginx
   labels:
-    name: myalpine-app
+    name: mynginx-app
 spec:
   containers:
-  - name: myalpine
-    image: alpine
-    command:
-      [
-        "sh",
-        "-c",
-        "mkdir -p /test-dir",
-        "echo Hello from Alpine > /test-dir/sample.txt; sleep 3600"
-      ]
+  - name: mynginx-app
+    image: nginx:latest
     volumeMounts:
-    - name: myalpine-vol
-      mountPath: /test-dir
+    - name: mynginx-vol
+      mountPath: /var/log/nginx
     resources:
       limits:
         memory: "128Mi"
         cpu: "100m"
   volumes:
-  - name: myalpine-vol
+  - name: mynginx-vol
     hostPath: 
-      path: /tmp/msg # path on the host system where you want to share the data (node on which this pod will be scheduled)
+      path: /tmp/logs # path on the host system where you want to share the data (node on which this pod will be scheduled)
       type: Directory # this field is optional
