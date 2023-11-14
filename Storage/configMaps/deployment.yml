@@ -27,4 +27,4 @@ spec:
       volumes:
       - name: from-cm-vol
         configMap:
-          name: dev-html
+          name: dev-config
