@@ -45,13 +45,13 @@ metadata:
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
-    kind: Deployment
-    name: nginx-deployment
+    kind: nginx-deployment
+    name: nginx
   minReplicas: 3
   maxReplicas: 10
   metrics:
-    - type: Resources
-      resources:
+    - type: Resource
+      resource:
         name: cpu
         target:
           type: Utilization
