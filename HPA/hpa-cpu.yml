@@ -33,7 +33,7 @@ spec:
   selector:
     app: nginx-app-pod
   ports:
-  - port: 3050
+  - port: 80
     targetPort: 80
 ---
 
