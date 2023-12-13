@@ -17,15 +17,16 @@ spec:
         image: nginx:latest
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "20m"
+            memory: 128Mi
+            cpu: 20m
         ports:
         - containerPort: 80
 
 ---
 apiVersion: v1
 kind: Service
-metadata: nginx-service
+metadata: 
+  name: nginx-service
 spec:
   selector:
     app: nginx-deployment
