@@ -19,6 +19,7 @@ spec:
         image: nginx:latest
         resources:
           limits:
+            memory: "128Mi"
             cpu: "20m"
         ports:
         - containerPort: 80
@@ -44,14 +45,14 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: nginx-app-pod
+    name: nginx
   minReplicas: 3
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 10
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 10
 
