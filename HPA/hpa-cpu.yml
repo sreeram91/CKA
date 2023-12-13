@@ -8,11 +8,12 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx-app-pod
+      app: nginx-app
   template:
     metadata:
+      name: nginx-app-pod
       labels:
-        app: nginx-app-pod
+        app: nginx-app
     spec:
       containers:
       - name: nginx-container
@@ -31,7 +32,7 @@ metadata:
   name: nginx-service
 spec:
   selector:
-    app: nginx-app-pod
+    app: nginx-app
   ports:
   - port: 80
     targetPort: 80
