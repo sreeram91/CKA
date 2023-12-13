@@ -47,12 +47,12 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: nginx-deployment
-    minReplicas: 3
-    maxReplicas: 10
-    metrics:
-      - type: Resources
-        resources:
-          name: cpu
-          target:
-            type: Utilization
-            averageUtilization: 10
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+    - type: Resources
+      resources:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 10
