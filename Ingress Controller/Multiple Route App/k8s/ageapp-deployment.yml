@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingresscheck-ageapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingresscheck-ageapp
+  template:
+    metadata:
+      name: ingresscheck-ageapp-pod
+      labels:
+        app: ingresscheck-ageapp
+    spec:
+      containers:
+      - name: ageapp
+        image: sreeram91/ingresscheck-multiple-ageapp
+        resources:
+          limits:
+            memory: 100Mi
+            cpu: 20m
+        ports:
+        - containerPort: 3007
