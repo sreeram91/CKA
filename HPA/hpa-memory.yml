@@ -19,7 +19,7 @@ spec:
         resources:
           limits:
             cpu: 100m
-            memory: 50Mi
+            memory: 128Mi
         ports:
         - containerPort: 80
 
@@ -52,5 +52,5 @@ spec:
     resource:
       name: memory
       target:
-        type: Utilization
-        averageUtilization: 10
+        type: AverageValue
+        averageValue: 20Mi
