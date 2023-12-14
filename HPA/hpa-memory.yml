@@ -12,16 +12,16 @@ spec:
       name: nginx-deployment-pods
       labels:
         app: nginx-deployment
-  spec:
-    containers:
-      - name: nginx-containers
-        image: nginx:latest
-        resources:
-          limits:
-            cpu: 100m
-            memory: 50Mi
-        ports:
-          - containerPort: 80
+    spec:
+      containers:
+        - name: nginx-containers
+          image: nginx:latest
+          resources:
+            limits:
+              cpu: 100m
+              memory: 50Mi
+          ports:
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
