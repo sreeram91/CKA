@@ -14,7 +14,7 @@ spec:
         app: nginx-deployment
     spec:
       containers:
-        - name: nginx-containers
+        - name: nginx-container
           image: nginx:latest
           resources:
             limits:
@@ -42,13 +42,11 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: nginx-deployment
-  minReplicas: 2
-  maxReplicas: 6
+    name: nginx-deployment # name of the deployment
+  minReplicas: 3
+  maxReplicas: 10
   metrics:
-    - type: Resource
-      resource:
-        name: memory
-        target:
-          type: Utilization
-          averageUtilization: 40
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 10
