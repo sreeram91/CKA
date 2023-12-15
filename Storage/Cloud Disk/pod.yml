@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-using-clouddisk
+  labels:
+    name: nginx-using-clouddisk
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
+    volumeMounts:
+    - name: nginx-vol
+      mountPath: /var/log/nginx
+    ports:
+    - containerPort: 80
+  volumes:
+  - name: nginx-vol
+    persistentVolumeClaim:
+      claimName: sc-pvc
