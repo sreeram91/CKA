@@ -6,7 +6,7 @@ metadata:
     app: simple-node-app
 spec:
   replicas: 5
-  minReadySeconds: 45 # wait for 45 seconds before the old version is terminated (keeps the pd ready for 45 seconds before termination)
+  minReadySeconds: 45 # wait for 45 seconds before the old version is terminated (keeps the pod ready for 45 seconds before termination)
   strategy:
     type: RollingUpdate
     rollingUpdate:
