@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db_connection_cm
+data:
+  db_h.txt: |
+    database_host
+  db_p.txt: |
+    database_port
+
+    

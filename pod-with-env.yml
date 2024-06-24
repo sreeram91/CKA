@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-pod-with-environment-variable
+  labels:
+    name: sample-pod
+spec:
+  containers:
+  - name: sample-pod
+    image: busybox
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
+    env:
+    - name: variable1
+      value: someValue
+    - name: variable2
+      value: someOtherValue
+    command:
+    - /bin/sh
+    - -c
+    - |
+      echo "$variable1 && $variable2" 
+      sleep 3600"

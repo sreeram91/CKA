@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db_connection
+spec:
+  selector:
+    matchLabels:
+      app: db_connection_app
+  template:
+    metadata:
+      labels:
+        app: db_connection_app
+    spec:
+      containers:
+      - name: nginx-pod
+        image: nginx:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        env:
+        - name: db_h
+          valueFrom:
+            configMapKeyRef:
+              key: db_h.txt
+              name: db_connection_cm
+        - name: db_p
+          valueFrom:
+            configMapKeyRef:
+              key: db_p.txt
+              name: db_connection_cm
